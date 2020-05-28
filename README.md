@@ -20,3 +20,17 @@ npm i @google-cloud/speech
 // Subscribe for Speech service and obtain API Keys 
 // install microsoft Speech SDK
 npm install microsoft-cognitiveservices-speech-sdk
+
+
+What it does:
+takes preconfigured file from /resources and sends it to both Google and Microsoft Asure Speech services
+
+example:
+
+[Google]: how old is the Brooklyn Bridge
+sample-google.js:36
+[Microsoft]Now recognizing from: ./resources/audio.raw
+sample-ms.js:39
+[Microsoft] How old is the Brooklyn bridge?
+sample-ms.js:45
+[{"provider":"google","transcription":"how old is the Brooklyn Bridge"},{"provider":"microsoft","transcription":"How old is the Brooklyn bridge?"}]
