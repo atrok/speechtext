@@ -9,10 +9,24 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceFolder}/index.js",
-            "env":
-{
-"GOOGLE_APPLICATION_CREDENTIALS": "/Users/andreytrok/git/speechtext/speech-accuracy-test-068ed929ed28.json"
-}
+            "env": {
+                "GOOGLE_APPLICATION_CREDENTIALS": "C:\\Users\\Administrator\\Documents\\JS\\speechtext\\speechtext\\speech-accuracy-test-068ed929ed28.json"
+            }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch microsoft sample",
+            "program": "${workspaceFolder}/sample-ms.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch google sample",
+            "program": "${workspaceFolder}/sample-google.js",
+            "env": {
+                "GOOGLE_APPLICATION_CREDENTIALS": "C:\\Users\\Administrator\\Documents\\JS\\speechtext\\speechtext\\speech-accuracy-test-068ed929ed28.json"
+            }
         }
     ]
 }
