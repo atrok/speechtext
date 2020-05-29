@@ -35,7 +35,7 @@ async function google(audiopath, cb) {
       .join('\n');
     console.log(`[Google]: ${transcription}`);
 
-    cb({ provider: 'google', transcription: transcription });
+    cb(transcription, "google");
 
     resolve();
 

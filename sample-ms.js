@@ -44,7 +44,7 @@ function microsoft(audiopath, cb) {
             function (result) {
                 console.log("[Microsoft] " + result.text);
 
-                cb({ provider: 'microsoft', transcription: result.text });
+                cb(result.text, "microsoft");
 
                 recognizer.close();
                 recognizer = undefined;
