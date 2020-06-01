@@ -26,7 +26,7 @@ const audio = './resources/audio.raw';
 
             await microsoft(audio, update_result);
 
-            var match = comparison(result.google.transcription, result.microsoft.transcription)
+            var match = comparison(result.google.transcription, result.microsoft.transcription, properties.tolowercase)
             results.push({ audio: audio, result: result, match: match })
 
         }
