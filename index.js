@@ -1,7 +1,7 @@
 
-const google = require('./sample-google');
-const microsoft = require('./sample-ms');
-const comparison = require('./transcript_comparison');
+const providergooglecreate = require('./lib/sample-google');
+const providermicrosoftcreate = require('./lib/sample-ms');
+const comparison = require('./lib/transcript_comparison');
 const properties = require('./properties');
 
 
@@ -19,12 +19,14 @@ const audio = './resources/audio.raw';
 
 (async function () {
 
+    var google = providergooglecreate(properties.providers.google);
+    var microsoft = providermicrosoftcreate(properties.providers.microsoft);
 
     try {
         for (var i = 0; i < properties.files; i++) {
-            await google(audio, update_result);
+            await google.run(audio, update_result);
 
-            await microsoft(audio, update_result);
+            await microsoft.run(audio, update_result);
 
             var match = comparison(result.google.transcription, result.microsoft.transcription, properties.tolowercase)
             results.push({ audio: audio, result: result, match: match })
