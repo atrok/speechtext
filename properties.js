@@ -1,7 +1,7 @@
 module.exports = {
-  files: 2,
+  files: 20,
   resources: "./resources", // path to files root directory
-  comparison_threshold: 1, // condition to check 2 strings to decide if there is a match or not
+  comparison_threshold: 5, // condition to check 2 strings to decide if there is a match or not
   tolowercase: true, // allows to check 2 strings with regardless of its capitalisation
   providers: {
     microsoft: {

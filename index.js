@@ -1,5 +1,7 @@
 const providergooglecreate = require("./lib/sample-google");
 const providermicrosoftcreate = require("./lib/sample-ms");
+const statparsercreate = require("./stats");
+
 const comparison = require("./lib/transcript_comparison");
 const properties = require("./properties");
 const transcripts = require("./transcripts");
@@ -34,7 +36,12 @@ var original = "";
         // process no more than number of properties.files
         for (element in transcripts) {
           //and only if the file is in transcript array
-          if (dirent.name === transcripts[element].file) {
+          // and there is no miss flag set true
+          if (
+            dirent.name === transcripts[element].file &&
+            (transcripts[element].miss == "undefined" ||
+              !transcripts[element].miss)
+          ) {
             transcripts[element].file = path.resolve(dir.path, dirent.name);
 
             result = {
@@ -50,9 +57,15 @@ var original = "";
 
             var audio = transcripts[element].file;
 
-            await google.run(transcripts[element], update_result);
+            result.google.transcription = await google.run(
+              transcripts[element],
+              update_result
+            );
 
-            await microsoft.run(transcripts[element], update_result);
+            result.microsoft.transcription = await microsoft.run(
+              transcripts[element],
+              update_result
+            );
 
             results.push({
               audio: audio,
@@ -69,7 +82,10 @@ var original = "";
       }
     }
 
-    console.log(JSON.stringify(results, 2));
+    //console.log(JSON.stringify(results, 2));
+    var s = statparsercreate();
+
+    s.parse(results);
   } catch (err) {
     console.log(err);
   }
